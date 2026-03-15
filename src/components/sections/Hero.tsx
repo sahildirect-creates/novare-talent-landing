@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import ParticleCanvas from "@/components/effects/ParticleCanvas";
+import ThreeGrid from "@/components/effects/ThreeGrid";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import Marquee from "@/components/ui/Marquee";
 import GlowOrb from "@/components/effects/GlowOrb";
@@ -11,10 +11,21 @@ import { STATS, ROLE_TICKER } from "@/lib/constants";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background */}
-      <ParticleCanvas />
-      <GlowOrb className="-top-40 -right-40" color="rgba(124, 58, 237, 0.08)" size="800px" />
-      <GlowOrb className="-bottom-40 -left-40" color="rgba(79, 70, 229, 0.06)" size="700px" />
+      {/* Background — 3D grid + parallax orbs */}
+      <ThreeGrid />
+      <GlowOrb
+        className="-top-40 -right-40"
+        color="rgba(124, 58, 237, 0.08)"
+        size="800px"
+        parallaxIntensity={40}
+      />
+      <GlowOrb
+        className="-bottom-40 -left-40"
+        color="rgba(79, 70, 229, 0.06)"
+        size="700px"
+        parallaxIntensity={25}
+        parallaxInvert
+      />
 
       {/* Content */}
       <div className="relative z-10 text-center section-padding pt-24 pb-8 max-w-5xl mx-auto">

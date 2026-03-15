@@ -19,7 +19,13 @@ export default function NovareStandard() {
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden" id="for-companies">
-      <GlowOrb className="top-0 right-0" color="rgba(79, 70, 229, 0.06)" size="600px" />
+      <GlowOrb
+        className="top-0 right-0"
+        color="rgba(79, 70, 229, 0.06)"
+        size="600px"
+        parallaxIntensity={22}
+        parallaxInvert
+      />
 
       <div className="section-padding">
         <SectionHeader

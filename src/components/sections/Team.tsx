@@ -2,12 +2,20 @@
 
 import SectionHeader from "@/components/ui/SectionHeader";
 import { StaggerContainer, StaggerItem } from "@/components/effects/ScrollReveal";
+import GlowOrb from "@/components/effects/GlowOrb";
 import { TEAM_MEMBERS } from "@/lib/constants";
 
 export default function Team() {
   return (
-    <section className="py-24 md:py-32 relative" id="team">
-      <div className="section-padding">
+    <section className="py-24 md:py-32 relative overflow-hidden" id="team">
+      <GlowOrb
+        className="top-1/3 right-0"
+        color="rgba(79, 70, 229, 0.05)"
+        size="600px"
+        parallaxIntensity={15}
+        parallaxInvert
+      />
+      <div className="section-padding relative z-10">
         <SectionHeader
           tag="The Team"
           title="Built by"

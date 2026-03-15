@@ -2,13 +2,26 @@
 
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import GlowOrb from "@/components/effects/GlowOrb";
+import AuroraMesh from "@/components/effects/AuroraMesh";
 
 export default function FinalCTA() {
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background glow */}
-      <GlowOrb className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" color="rgba(124, 58, 237, 0.12)" size="800px" />
-      <GlowOrb className="top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2" color="rgba(79, 70, 229, 0.08)" size="600px" />
+      {/* Background — aurora mesh + parallax orbs */}
+      <AuroraMesh intensity={0.7} opacity={0.8} />
+      <GlowOrb
+        className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        color="rgba(124, 58, 237, 0.12)"
+        size="800px"
+        parallaxIntensity={18}
+      />
+      <GlowOrb
+        className="top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2"
+        color="rgba(79, 70, 229, 0.08)"
+        size="600px"
+        parallaxIntensity={12}
+        parallaxInvert
+      />
 
       <div className="section-padding relative z-10 text-center">
         <ScrollReveal>

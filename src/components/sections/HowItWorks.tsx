@@ -4,6 +4,8 @@ import { GraduationCap, Search, Users, Zap } from "lucide-react";
 import GlassCard from "@/components/ui/GlassCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { StaggerContainer, StaggerItem } from "@/components/effects/ScrollReveal";
+import ParticleCanvas from "@/components/effects/ParticleCanvas";
+import GlowOrb from "@/components/effects/GlowOrb";
 import { FEATURES } from "@/lib/constants";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -15,8 +17,17 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 md:py-32 relative" id="how-it-works">
-      <div className="section-padding">
+    <section className="py-24 md:py-32 relative overflow-hidden" id="how-it-works">
+      <div className="absolute inset-0 opacity-30">
+        <ParticleCanvas />
+      </div>
+      <GlowOrb
+        className="top-0 left-1/4"
+        color="rgba(124, 58, 237, 0.06)"
+        size="700px"
+        parallaxIntensity={20}
+      />
+      <div className="section-padding relative z-10">
         <SectionHeader
           tag="How It Works"
           title="How Novare finds"

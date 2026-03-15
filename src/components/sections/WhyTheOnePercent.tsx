@@ -27,7 +27,12 @@ export default function WhyTheOnePercent() {
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden" id="about">
-      <GlowOrb className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" color="rgba(124, 58, 237, 0.06)" size="900px" />
+      <GlowOrb
+        className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        color="rgba(124, 58, 237, 0.06)"
+        size="900px"
+        parallaxIntensity={20}
+      />
 
       <div className="section-padding relative z-10">
         <SectionHeader

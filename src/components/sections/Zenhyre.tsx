@@ -4,6 +4,7 @@ import { ArrowRight, Briefcase, GraduationCap } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { StaggerContainer, StaggerItem } from "@/components/effects/ScrollReveal";
 import GlowOrb from "@/components/effects/GlowOrb";
+import AuroraMesh from "@/components/effects/AuroraMesh";
 
 const cards = [
   {
@@ -37,7 +38,13 @@ const cards = [
 export default function Zenhyre() {
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
-      <GlowOrb className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" color="rgba(124, 58, 237, 0.05)" size="800px" />
+      <AuroraMesh intensity={0.5} opacity={0.6} />
+      <GlowOrb
+        className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        color="rgba(124, 58, 237, 0.05)"
+        size="800px"
+        parallaxIntensity={18}
+      />
 
       <div className="section-padding relative z-10">
         <SectionHeader

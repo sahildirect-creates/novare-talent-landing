@@ -6,6 +6,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ScrollReveal from "@/components/effects/ScrollReveal";
+import AuroraMesh from "@/components/effects/AuroraMesh";
 import { CLIENT_TESTIMONIALS, STUDENT_TESTIMONIALS } from "@/lib/constants";
 
 function TestimonialCard({
@@ -107,8 +108,9 @@ function CarouselSection({
 
 export default function Testimonials() {
   return (
-    <section className="py-24 md:py-32 relative" id="testimonials">
-      <div className="section-padding">
+    <section className="py-24 md:py-32 relative overflow-hidden" id="testimonials">
+      <AuroraMesh intensity={0.4} opacity={0.5} />
+      <div className="section-padding relative z-10">
         <SectionHeader
           tag="Testimonials"
           title="Trusted by those who"
