@@ -23,14 +23,15 @@ export default function SocialProofBar() {
         {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
           <div
             key={i}
-            className="flex items-center justify-center w-32 h-16 mx-8 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-500"
+            className="flex items-center justify-center w-36 h-20 mx-8 grayscale-[50%] hover:grayscale-0 opacity-75 hover:opacity-100 transition-all duration-500"
           >
             <Image
               src={logo.src}
               alt={logo.alt}
               width={120}
               height={60}
-              className="object-contain max-h-12"
+              className="object-contain max-h-14"
+              style={{ width: "auto" }}
             />
           </div>
         ))}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Providers from "@/components/providers/Providers";
+import GlobalBackground from "@/components/effects/GlobalBackground";
 import "./globals.css";
 
 const inter = Inter({
@@ -39,6 +40,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="antialiased">
         <Providers>
+          <GlobalBackground />
           {children}
         </Providers>
         <div className="grain-overlay" />

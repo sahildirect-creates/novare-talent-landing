@@ -12,7 +12,7 @@ interface AnimatedCounterProps {
 export default function AnimatedCounter({
   value,
   suffix = "",
-  duration = 2000,
+  duration = 900,
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);

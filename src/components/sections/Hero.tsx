@@ -113,15 +113,15 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 1 }}
         className="relative z-10 w-full mt-auto pb-16"
       >
-        <div className="border-y border-white/5 py-4">
+        <div className="border-y border-white/10 py-4">
           <Marquee speed={40}>
             {ROLE_TICKER.map((role) => (
               <span
                 key={role}
-                className="text-sm text-[var(--color-text-muted)] whitespace-nowrap px-4 flex items-center gap-4"
+                className="text-sm text-[var(--color-text-secondary)] whitespace-nowrap px-4 flex items-center gap-4"
               >
                 {role}
-                <span className="w-1 h-1 rounded-full bg-[var(--color-violet-accent)] opacity-50" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-violet-accent)] opacity-70" />
               </span>
             ))}
           </Marquee>

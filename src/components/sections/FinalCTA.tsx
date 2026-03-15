@@ -8,20 +8,22 @@ export default function FinalCTA() {
   return (
     <section className="py-24 md:py-32 relative overflow-hidden">
       {/* Background — aurora mesh + parallax orbs */}
-      <AuroraMesh intensity={0.7} opacity={0.8} />
+      <AuroraMesh intensity={1} opacity={1} />
       <GlowOrb
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        color="rgba(124, 58, 237, 0.12)"
-        size="800px"
+        color="rgba(124, 58, 237, 0.2)"
+        size="900px"
         parallaxIntensity={18}
       />
       <GlowOrb
         className="top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2"
-        color="rgba(79, 70, 229, 0.08)"
-        size="600px"
+        color="rgba(79, 70, 229, 0.14)"
+        size="700px"
         parallaxIntensity={12}
         parallaxInvert
       />
+      {/* Extra center glow behind CTA */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[radial-gradient(ellipse,rgba(124,58,237,0.25)_0%,transparent_70%)] blur-2xl pointer-events-none" />
 
       <div className="section-padding relative z-10 text-center">
         <ScrollReveal>
