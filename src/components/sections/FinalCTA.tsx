@@ -6,7 +6,7 @@ import AuroraMesh from "@/components/effects/AuroraMesh";
 
 export default function FinalCTA() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Background — aurora mesh + parallax orbs */}
       <AuroraMesh intensity={1} opacity={1} />
       <GlowOrb

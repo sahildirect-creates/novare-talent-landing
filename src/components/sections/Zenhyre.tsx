@@ -37,7 +37,7 @@ const cards = [
 
 export default function Zenhyre() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       <AuroraMesh intensity={0.5} opacity={0.6} />
       <GlowOrb
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"

@@ -108,7 +108,7 @@ function CarouselSection({
 
 export default function Testimonials() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden" id="testimonials">
+    <section className="py-16 md:py-24 relative overflow-hidden" id="testimonials">
       <AuroraMesh intensity={0.4} opacity={0.5} />
       <div className="section-padding relative z-10">
         <SectionHeader

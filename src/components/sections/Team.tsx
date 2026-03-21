@@ -7,7 +7,7 @@ import { TEAM_MEMBERS } from "@/lib/constants";
 
 export default function Team() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden" id="team">
+    <section className="py-16 md:py-24 relative overflow-hidden" id="team">
       <GlowOrb
         className="top-1/3 right-0"
         color="rgba(79, 70, 229, 0.05)"

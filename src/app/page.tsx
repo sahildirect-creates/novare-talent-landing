@@ -17,10 +17,10 @@ export default function Home() {
       <Navbar />
       <Hero />
       <SocialProofBar />
+      <Zenhyre />
       <WhyTheOnePercent />
       <HowItWorks />
       <NovareStandard />
-      <Zenhyre />
       <Testimonials />
       <Team />
       <FAQs />

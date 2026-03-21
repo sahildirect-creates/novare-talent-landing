@@ -17,8 +17,8 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden" id="how-it-works">
-      <div className="absolute inset-0 opacity-30">
+    <section className="py-16 md:py-24 relative overflow-hidden" id="how-it-works">
+      <div className="absolute inset-0 opacity-90">
         <ParticleCanvas />
       </div>
       <GlowOrb

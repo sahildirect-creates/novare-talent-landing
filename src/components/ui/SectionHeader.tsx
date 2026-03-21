@@ -19,7 +19,7 @@ export default function SectionHeader({
   centered = true,
 }: SectionHeaderProps) {
   return (
-    <div className={cn(centered && "text-center", "mb-16", className)}>
+    <div className={cn(centered && "text-center", "mb-10", className)}>
       {tag && (
         <ScrollReveal>
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium tracking-wide text-[var(--color-lavender)] border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] mb-6">

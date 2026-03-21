@@ -26,7 +26,7 @@ export default function WhyTheOnePercent() {
   const statsOpacity = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden" id="about">
+    <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden" id="about">
       <GlowOrb
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         color="rgba(124, 58, 237, 0.06)"
