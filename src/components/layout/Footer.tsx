@@ -1,5 +1,6 @@
 import { Instagram } from "lucide-react";
 import { FOOTER_LINKS, SOCIAL_LINKS, CONTACT } from "@/lib/constants";
+import { MorphingText } from "@/components/ui/morphing-text";
 
 export default function Footer() {
   return (
@@ -24,7 +25,7 @@ export default function Footer() {
               <span className="text-lg font-bold">Novare Talent</span>
             </div>
             <p className="text-sm text-[var(--color-text-secondary)] mb-4 leading-relaxed">
-              India&apos;s elite talent network. Connecting top 1% institute graduates with companies building the future.
+              India's elite talent network. Connecting top 1% institute graduates with companies building the future.
             </p>
             <p className="text-xs text-[var(--color-text-muted)]">
               Incubated at SINE, IIT Bombay
@@ -120,7 +121,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[var(--color-text-muted)]">
-            &copy; {new Date().getFullYear()} Novare Talent Private Limited. All rights reserved.
+            © {new Date().getFullYear()} Novare Talent Private Limited. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {FOOTER_LINKS.legal.map((link) => (
@@ -134,6 +135,12 @@ export default function Footer() {
             ))}
           </div>
         </div>
+      <div className="w-full h-48 md:h-64 relative mt-4 overflow-hidden flex items-center justify-center">
+        <MorphingText
+          texts={["Novare", "Talent"]}
+          className="text-[18vw] font-extrabold text-white tracking-tight select-none pointer-events-none"
+        />
+      </div>
       </div>
     </footer>
   );

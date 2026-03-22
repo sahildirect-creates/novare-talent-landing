@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
+import { IBM_Plex_Serif } from "next/font/google";
 import Providers from "@/components/providers/Providers";
 import GlobalBackground from "@/components/effects/GlobalBackground";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const satoshi = localFont({
+  src: "../../public/fonts/Satoshi-Variable.ttf",
+  variable: "--font-satoshi",
+  display: "swap",
 });
 
-const playfair = Playfair_Display({
+const ibmPlexSerif = IBM_Plex_Serif({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
+  variable: "--font-ibm-plex-serif",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -37,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${satoshi.variable} ${ibmPlexSerif.variable}`}>
       <body className="antialiased">
         <Providers>
           <GlobalBackground />

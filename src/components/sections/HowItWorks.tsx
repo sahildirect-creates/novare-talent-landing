@@ -1,7 +1,6 @@
 "use client";
 
 import { GraduationCap, Search, Users, Zap } from "lucide-react";
-import GlassCard from "@/components/ui/GlassCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { StaggerContainer, StaggerItem } from "@/components/effects/ScrollReveal";
 import ParticleCanvas from "@/components/effects/ParticleCanvas";
@@ -9,13 +8,22 @@ import GlowOrb from "@/components/effects/GlowOrb";
 import { FEATURES } from "@/lib/constants";
 
 const iconMap: Record<string, React.ReactNode> = {
-  GraduationCap: <GraduationCap size={28} />,
-  Search: <Search size={28} />,
-  Users: <Users size={28} />,
-  Zap: <Zap size={28} />,
+  GraduationCap: <GraduationCap size={32} />,
+  Search: <Search size={32} />,
+  Users: <Users size={32} />,
+  Zap: <Zap size={32} />,
+};
+
+const iconGlow: Record<string, string> = {
+  GraduationCap: "rgba(124,58,237,0.5)",
+  Search: "rgba(99,102,241,0.5)",
+  Users: "rgba(139,92,246,0.5)",
+  Zap: "rgba(167,139,250,0.5)",
 };
 
 export default function HowItWorks() {
+  const [f0, f1, f2, f3] = FEATURES;
+
   return (
     <section className="py-16 md:py-24 relative overflow-hidden" id="how-it-works">
       <div className="absolute inset-0 opacity-90">
@@ -35,22 +43,65 @@ export default function HowItWorks() {
           description="A rigorous, human-driven process that delivers quality over quantity."
         />
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {FEATURES.map((feature) => (
-            <StaggerItem key={feature.title}>
-              <GlassCard className="h-full group cursor-default">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-violet-accent)]/20 to-[var(--color-indigo-accent)]/20 flex items-center justify-center text-[var(--color-violet-accent)] mb-4 group-hover:from-[var(--color-violet-accent)]/30 group-hover:to-[var(--color-indigo-accent)]/30 transition-all duration-300">
-                  {iconMap[feature.icon]}
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                  {feature.description}
-                </p>
-              </GlassCard>
-            </StaggerItem>
-          ))}
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
+          {/* Row 1 — two equal cards */}
+          <StaggerItem className="md:col-span-3">
+            <BentoCard feature={f0} className="min-h-[220px]" />
+          </StaggerItem>
+          <StaggerItem className="md:col-span-2">
+            <BentoCard feature={f1} className="min-h-[220px]" />
+          </StaggerItem>
+
+          {/* Row 2 — wide left + narrow right */}
+          <StaggerItem className="md:col-span-2">
+            <BentoCard feature={f2} className="min-h-[240px]" />
+          </StaggerItem>
+          <StaggerItem className="md:col-span-3">
+            <BentoCard feature={f3} className="min-h-[240px]" accent />
+          </StaggerItem>
         </StaggerContainer>
       </div>
     </section>
+  );
+}
+
+function BentoCard({
+  feature,
+  className = "",
+  accent,
+}: {
+  feature: (typeof FEATURES)[number];
+  className?: string;
+  accent?: boolean;
+}) {
+  return (
+    <div
+      className={`relative rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.03] backdrop-blur-md group cursor-default transition-all duration-150 hover:border-white/[0.12] hover:bg-white/[0.05] flex flex-col justify-end p-7 ${className}`}
+    >
+      {/* Background glow blob */}
+      <div
+        className="absolute -top-10 -right-10 w-48 h-48 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-200"
+        style={{ background: iconGlow[feature.icon] }}
+      />
+
+      {/* Icon */}
+      <div
+        className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 ${
+          accent
+            ? "bg-gradient-to-br from-violet-500/30 to-indigo-500/30 text-violet-300"
+            : "bg-white/[0.06] text-white/70"
+        } group-hover:scale-105 transition-transform duration-150`}
+      >
+        {iconMap[feature.icon]}
+      </div>
+
+      {/* Text */}
+      <h3 className="text-base font-semibold text-white mb-1.5">
+        <span className={accent ? "text-violet-300" : "text-white"}>{feature.title}.</span>
+      </h3>
+      <p className="text-sm text-white/50 leading-relaxed max-w-xs">
+        {feature.description}
+      </p>
+    </div>
   );
 }

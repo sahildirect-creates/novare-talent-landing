@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import ThreeGrid from "@/components/effects/ThreeGrid";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import { NumberTicker } from "@/components/ui/number-ticker";
 import Marquee from "@/components/ui/Marquee";
 import GlowOrb from "@/components/effects/GlowOrb";
 import { STATS, ROLE_TICKER } from "@/lib/constants";
@@ -36,7 +36,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="inline-block px-4 py-1.5 rounded-full text-xs font-mono tracking-[0.2em] uppercase text-[var(--color-lavender)] border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] mb-8"
         >
-          India&apos;s Elite Talent Network
+          India's Elite Talent Network
         </motion.span>
 
         {/* Headline */}
@@ -47,7 +47,7 @@ export default function Hero() {
           className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight leading-[1.05]"
         >
           We find the{" "}
-          <span className="font-[var(--font-playfair)] italic gradient-text">
+          <span className="font-[var(--font-serif)] italic gradient-text px-2">
             1%
           </span>
           <span className="gradient-text">.</span>
@@ -62,7 +62,7 @@ export default function Hero() {
         >
           From thousands of candidates to the few who change outcomes.
           <br className="hidden md:block" />
-          Curated talent from IITs, IIMs, and India&apos;s top institutes.
+          Curated talent from IITs, IIMs, and India's top institutes.
         </motion.p>
 
         {/* Stats */}
@@ -75,7 +75,8 @@ export default function Hero() {
           {STATS.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-2xl md:text-3xl font-bold gradient-text">
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                <NumberTicker value={stat.value} />
+                {stat.suffix}
               </div>
               <div className="text-xs md:text-sm text-[var(--color-text-muted)] mt-1">
                 {stat.label}

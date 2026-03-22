@@ -31,7 +31,7 @@ export default function ScrollReveal({
   children,
   variant = "fade-up",
   delay = 0,
-  duration = 0.6,
+  duration = 0.35,
   className,
   once = true,
 }: ScrollRevealProps) {
@@ -52,7 +52,7 @@ export default function ScrollReveal({
 export function StaggerContainer({
   children,
   className,
-  staggerDelay = 0.1,
+  staggerDelay = 0.06,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -84,7 +84,7 @@ export function StaggerItem({
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0 },
       }}
-      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
       className={cn(className)}
     >
       {children}

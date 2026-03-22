@@ -5,9 +5,9 @@ import Marquee from "@/components/ui/Marquee";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 
 const LOGOS = [
-  { src: "/images/sine-logo.jpg", alt: "SINE IIT Bombay" },
-  { src: "/images/iitbaa-logo.jpg", alt: "IIT Bombay Alumni Association" },
-  { src: "/images/nt-logo.jpg", alt: "Novare Talent" },
+  { src: "/images/sine-logo.png", alt: "SINE IIT Bombay" },
+  { src: "/images/iitbaa-logo.png", alt: "IIT Bombay Alumni Association" },
+  { src: "/images/nt-logo.png", alt: "Novare Talent" },
 ];
 
 export default function SocialProofBar() {
@@ -23,7 +23,7 @@ export default function SocialProofBar() {
         {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
           <div
             key={i}
-            className="flex items-center justify-center w-36 h-20 mx-8 grayscale-[50%] hover:grayscale-0 opacity-75 hover:opacity-100 transition-all duration-500"
+            className="flex items-center justify-center w-32 h-16 mx-8 hover:grayscale-0 opacity-75 hover:opacity-100 transition-all duration-500"
           >
             <Image
               src={logo.src}
@@ -31,7 +31,7 @@ export default function SocialProofBar() {
               width={120}
               height={60}
               className="object-contain max-h-14"
-              style={{ width: "auto" }}
+              style={{ width: "auto", height: "auto" }}
             />
           </div>
         ))}

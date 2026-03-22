@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import GlowOrb from "@/components/effects/GlowOrb";
 import { FAQS } from "@/lib/constants";
+import { ShineBorder } from "@/components/ui/shine-border";
 
 function FAQItem({
   question,
@@ -25,10 +26,11 @@ function FAQItem({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay: index * 0.07, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`glass rounded-xl overflow-hidden transition-all duration-300 ${
+      className={`relative glass rounded-xl overflow-hidden transition-all duration-300 ${
         isOpen ? "border-[var(--color-violet-accent)]/40 shadow-[0_0_24px_rgba(124,58,237,0.12)]" : "glass-hover"
       }`}
     >
+      <ShineBorder shineColor={["#7C3AED", "#4F46E5", "#C4B5FD"]} />
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between px-5 py-4 text-left cursor-pointer gap-4"
