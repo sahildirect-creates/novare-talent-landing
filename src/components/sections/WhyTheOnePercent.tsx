@@ -6,7 +6,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import GlowOrb from "@/components/effects/GlowOrb";
 
-const DOTS_COUNT = 120;
+const DOTS_COUNT = 1000;
 
 const PROOF_STATS = [
   { value: 4.2, suffix: " Days", label: "Avg. time to shortlist" },
@@ -26,7 +26,7 @@ export default function WhyTheOnePercent() {
   const statsOpacity = useTransform(scrollYProgress, [0.5, 0.7], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden" id="about">
+    <section ref={sectionRef} className="py-16 md:py-12 relative overflow-hidden" id="about">
       <GlowOrb
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         color="rgba(124, 58, 237, 0.06)"
@@ -47,7 +47,7 @@ export default function WhyTheOnePercent() {
           {/* Fading dots */}
           <motion.div
             style={{ opacity: dotsOpacity }}
-            className="grid grid-cols-12 md:grid-cols-15 gap-2 md:gap-3"
+            className="grid grid-cols-25 md:grid-cols-50 gap-2 md:gap-3"
           >
             {Array.from({ length: DOTS_COUNT }).map((_, i) => (
               <div
@@ -80,7 +80,7 @@ export default function WhyTheOnePercent() {
                   suffix={stat.suffix}
                 />
               </div>
-              <div className="text-sm text-[var(--color-text-secondary)] mt-2">
+              <div className="text-sm text-white mt-2">
                 {stat.label}
               </div>
             </div>

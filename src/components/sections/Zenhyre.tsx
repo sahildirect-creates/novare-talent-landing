@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowUpRight, Briefcase, GraduationCap } from "lucide-react";
+import { ArrowUpRight, Briefcase, GraduationCap, Users, Target, Zap, MapPin, BookOpen, Wrench } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
+import GlowButton from "@/components/ui/GlowButton";
 import { StaggerContainer, StaggerItem } from "@/components/effects/ScrollReveal";
 import GlowOrb from "@/components/effects/GlowOrb";
 import AuroraMesh from "@/components/effects/AuroraMesh";
@@ -13,11 +14,11 @@ const cards = [
     cta: "Sign up as Recruiter",
     href: "/sign-up",
     icon: Briefcase,
-    number: "01",
+
     benefits: [
-      "Access to exclusive talent pool",
-      "Hire curated candidates",
-      "Faster and simpler process",
+      { text: "Access to exclusive talent pool", icon: Users },
+      { text: "Hire curated candidates", icon: Target },
+      { text: "Faster and simpler process", icon: Zap },
     ],
     // Dark card — inverted
     variant: "dark",
@@ -28,11 +29,11 @@ const cards = [
     cta: "Sign up as Student",
     href: "/sign-up",
     icon: GraduationCap,
-    number: "02",
+
     benefits: [
-      "Internships and job opportunities",
-      "Resources for career guidance",
-      "Tools & much more",
+      { text: "Internships and job opportunities", icon: MapPin },
+      { text: "Resources for career guidance", icon: BookOpen },
+      { text: "Tools & much more", icon: Wrench },
     ],
     // Light/ghost card
     variant: "light",
@@ -41,11 +42,13 @@ const cards = [
 
 export default function Zenhyre() {
   return (
-    <section className="py-16 md:py-28 relative overflow-hidden">
-      <AuroraMesh intensity={0.5} opacity={0.6} />
+    <section className="py-16 md:py-28 relative overflow-x-clip">
+      {/* <AuroraMesh intensity={1} opacity={1} className="z-0" /> */}
+      
+
       <GlowOrb
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        color="rgba(124, 58, 237, 0.05)"
+        color="rgba(124, 58, 237, 0.5)"
         size="800px"
         parallaxIntensity={18}
       />
@@ -75,26 +78,13 @@ export default function Zenhyre() {
                     }
                   `}
                 >
-                  {/* Large background number — decorative */}
-                  <span
-                    className="absolute top-6 right-7 text-[5rem] font-black leading-none select-none pointer-events-none tabular-nums"
-                    style={{
-                      color: isDark
-                        ? "rgba(124,58,237,0.12)"
-                        : "rgba(255,255,255,0.04)",
-                      fontVariantNumeric: "tabular-nums",
-                    }}
-                  >
-                    {card.number}
-                  </span>
-
                   {/* Top row: label + icon */}
                   <div className="flex items-center justify-between mb-8">
                     <span
                       className={`text-xs font-semibold uppercase tracking-[0.18em] ${
                         isDark
                           ? "text-[var(--color-violet-accent)]"
-                          : "text-[var(--color-text-secondary)]"
+                          : "text-white"
                       }`}
                     >
                       {card.label}
@@ -103,7 +93,7 @@ export default function Zenhyre() {
                       className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
                         isDark
                           ? "border-[var(--color-violet-accent)]/30 text-[var(--color-violet-accent)]"
-                          : "border-white/10 text-[var(--color-text-secondary)]"
+                          : "border-white/10 text-white"
                       }`}
                     >
                       <Icon size={16} strokeWidth={1.5} />
@@ -115,51 +105,32 @@ export default function Zenhyre() {
                     {card.title}
                   </h3>
 
-                  {/* Benefits — numbered, not bulleted */}
-                  
-                  <ul className="space-y-4 mb-10 flex-1">
-                    {card.benefits.map((benefit, i) => (
-                      <li key={benefit} className="flex items-start gap-4">
-                        {/* Thin separator line */}
-                        {i > 0 && (
-                          <div className="absolute left-8 right-8 h-px bg-white/5" />
-                        )}
-                        <span
-                          className={`text-xs font-mono mt-0.5 shrink-0 ${
+                  {/* Benefits */}
+                  <ul className="space-y-3 mb-10 flex-1">
+                    {card.benefits.map((benefit) => {
+                      const BenefitIcon = benefit.icon;
+                      return (
+                        <li key={benefit.text} className="flex items-center gap-3 text-sm text-white leading-relaxed">
+                          <div className={`w-5 h-5 rounded-md flex items-center justify-center flex-shrink-0 ${
                             isDark
-                              ? "text-[var(--color-violet-accent)]/60"
-                              : "text-[var(--color-text-secondary)]/40"
-                          }`}
-                        >
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                          {benefit}
-                        </span>
-                      </li>
-                    ))}
+                              ? "bg-[var(--color-violet-accent)]/20 text-[var(--color-violet-accent)]"
+                              : "bg-white/10 text-white/80"
+                          }`}>
+                            <BenefitIcon size={12} strokeWidth={2} />
+                          </div>
+                          <span>{benefit.text}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
 
-                  {/* CTA — text link style, not a pill button */}
-                  <a
-                    href={card.href}
-                    className={`
-                      inline-flex items-center gap-2 text-sm font-medium
-                      transition-all duration-300 group/link w-fit
-                      ${isDark
-                        ? "text-[var(--color-violet-accent)]"
-                        : "text-[var(--color-text-secondary)] hover:text-white"
-                      }
-                    `}
-                  >
-                    <span className="border-b border-current pb-px">
+                  {/* CTA */}
+                  <GlowButton href={card.href} variant={isDark ? "primary" : "secondary"}>
+                    <span className="flex items-center gap-2">
                       {card.cta}
+                      <ArrowUpRight size={14} />
                     </span>
-                    <ArrowUpRight
-                      size={14}
-                      className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
-                    />
-                  </a>
+                  </GlowButton>
                 </div>
               </StaggerItem>
             );

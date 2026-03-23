@@ -25,36 +25,36 @@ interface BlobConfig {
 
 const blobs: BlobConfig[] = [
   {
-    color: "rgba(124, 58, 237, 0.07)",
+    color: "rgba(124, 58, 237, 0.4)",
     size: "60%",
     position: "top-[-20%] left-[-10%]",
     parallax: 35,
     driftClass: "animate-aurora-drift-1",
-    blur: "blur-[120px]",
+    blur: "blur-[80px]",
   },
   {
-    color: "rgba(79, 70, 229, 0.05)",
+    color: "rgba(79, 70, 229, 0.3)",
     size: "50%",
     position: "bottom-[-15%] right-[-15%]",
     parallax: -25,
     driftClass: "animate-aurora-drift-2",
-    blur: "blur-[100px]",
+    blur: "blur-[60px]",
   },
   {
-    color: "rgba(59, 130, 246, 0.04)",
+    color: "rgba(59, 130, 246, 0.25)",
     size: "45%",
     position: "top-[30%] right-[10%]",
     parallax: 45,
     driftClass: "animate-aurora-drift-3",
-    blur: "blur-[140px]",
+    blur: "blur-[100px]",
   },
   {
-    color: "rgba(168, 85, 247, 0.035)",
+    color: "rgba(168, 85, 247, 0.2)",
     size: "40%",
     position: "bottom-[10%] left-[20%]",
     parallax: -18,
     driftClass: "animate-aurora-drift-4",
-    blur: "blur-[110px]",
+    blur: "blur-[70px]",
   },
 ];
 

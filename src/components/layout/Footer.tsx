@@ -4,13 +4,13 @@ import { FOOTER_LINKS, SOCIAL_LINKS, CONTACT } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border border-white/10 bg-black/80 backdrop-blur-sm rounded-2xl m-8">
-      <div className="absolute -top-64 left-1/2 -translate-x-1/2 w-[min(1600px,200vw)] h-[900px] rounded-full opacity-10 pointer-events-none" style={{ backgroundColor: "#7a5af8", filter: "blur(120px)", zIndex: 0 }} />
-      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none" style={{ backgroundColor: "#7a5af8", filter: "blur(100px)", zIndex: 0 }} />
-      <div className="section-padding py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="relative overflow-hidden border border-black/20 bg-black/80 backdrop-blur-sm " style={{ backgroundImage: 'url(/images/footer-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/60" />
+      <div className="relative section-padding py-8 sm:py-12 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Image
                 src="/images/logo.svg"
@@ -115,16 +115,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white">
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white text-center sm:text-left">
             © {new Date().getFullYear()} Novare Talent Private Limited. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center sm:justify-end">
             {FOOTER_LINKS.legal.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-xs text-white hover:text-gray-300 transition-colors"
+                className="text-xs text-white hover:text-gray-300 transition-colors whitespace-nowrap"
               >
                 {link.label}
               </a>

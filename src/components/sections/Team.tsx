@@ -10,9 +10,9 @@ export default function Team() {
   return (
     <section className="py-16 md:py-28 relative overflow-hidden" id="team">
       <GlowOrb
-        className="top-1/3 right-0"
-        color="rgba(79, 70, 229, 0.05)"
-        size="600px"
+        className="top-0 right-0"
+        color="rgba(124, 58, 237, 0.4)"
+        size="1000px"
         parallaxIntensity={15}
         parallaxInvert
       />
@@ -33,12 +33,12 @@ export default function Team() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
               Built by{" "}
               <span className="gradient-text">IIT Bombay</span>{" "}
-              <span className="text-text-secondary font-light">minds</span>
+              minds
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <p className="mt-5 text-text-secondary text-base leading-relaxed">
+            <p className="mt-5 text-white text-base leading-relaxed">
               A team of builders who understand the talent ecosystem from the inside.
             </p>
           </ScrollReveal>
@@ -50,7 +50,7 @@ export default function Team() {
             <StaggerItem key={member.name}>
               <div className={i % 2 === 1 ? "mt-8 md:mt-14" : ""}>
                 {/* Card shell */}
-                <div className="relative overflow-hidden border border-glass-border bg-[rgba(15,15,30,0.5)]">
+                <div className="relative overflow-hidden border border-glass-border bg-[rgba(15,15,30,0.5)] rounded-md">
 
                   {/* Portrait photo */}
                   <div className="relative aspect-3/4 overflow-hidden">

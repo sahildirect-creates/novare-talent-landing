@@ -14,7 +14,7 @@ const LOGOS = [
 export default function SocialProofBar() {
   return (
     <section className="py-4 border-y border-white/5 relative">
-      <ScrollReveal className="text-center mb-8">
+      <ScrollReveal className="text-center">
         <p className="text-sm text-white tracking-wide uppercase">
           Trusted by founders and backed by
         </p>

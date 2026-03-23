@@ -37,7 +37,7 @@ export default function SectionHeader({
       </ScrollReveal>
       {description && (
         <ScrollReveal delay={0.2}>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-white max-w-2xl mx-auto">
             {description}
           </p>
         </ScrollReveal>

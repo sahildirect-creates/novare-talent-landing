@@ -3,6 +3,7 @@ import Image from "next/image";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Marquee } from "@/components/ui/Marquee";
 import { CLIENT_TESTIMONIALS, STUDENT_TESTIMONIALS } from "@/lib/constants";
+import GlowOrb from "../effects/GlowOrb";
 
 function TestimonialCard({
   name,
@@ -19,8 +20,9 @@ function TestimonialCard({
 }) {
   return (
     <div className="glass rounded-2xl p-6 w-80 shrink-0">
+
       <Quote size={20} className="text-[var(--color-violet-accent)] opacity-40 mb-4" />
-      <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6 line-clamp-5">
+      <p className="text-sm text-white leading-relaxed mb-6 line-clamp-5">
         {quote}
       </p>
       <div className="flex items-center gap-3">
@@ -48,8 +50,23 @@ function TestimonialCard({
 
 export default function Testimonials() {
   return (
-    <section className="py-16 md:py-24 overflow-hidden" id="testimonials">
+    <section className="py-16 md:py-12 relative overflow-hidden" id="testimonials">
+            <GlowOrb
+              className="top-0 right-0"
+              color="rgba(124, 58, 237, 0.4)"
+              size="800px"
+              parallaxIntensity={15}
+              parallaxInvert
+            />
+            <GlowOrb
+              className="bottom-0 left-0"
+              color="rgba(124, 58, 237, 0.4)"
+              size="800px"
+              parallaxIntensity={15}
+              parallaxInvert
+            />
       <div className="section-padding">
+
         <SectionHeader
           tag="Testimonials"
           title="Trusted by those who"
@@ -58,7 +75,7 @@ export default function Testimonials() {
       </div>
 
       <div className="mb-8">
-        <h3 className="text-lg font-medium text-[var(--color-text-secondary)] mb-4 section-padding">
+        <h3 className="text-lg font-medium text-white mb-4 section-padding">
           What our clients say
         </h3>
         <Marquee pauseOnHover repeat={6} className="[--gap:1.5rem] py-4">
@@ -76,7 +93,7 @@ export default function Testimonials() {
       </div>
 
       <div>
-        <h3 className="text-lg font-medium text-[var(--color-text-secondary)] mb-4 section-padding">
+        <h3 className="text-lg font-medium text-white mb-4 section-padding">
           What our students say
         </h3>
         <Marquee pauseOnHover reverse repeat={6} className="[--gap:1.5rem] py-4">

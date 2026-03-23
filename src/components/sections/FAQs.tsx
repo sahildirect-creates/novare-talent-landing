@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Plus, Minus } from "lucide-react";
 import GlowOrb from "@/components/effects/GlowOrb";
 import { FAQS } from "@/lib/constants";
 import { ShineBorder } from "@/components/ui/shine-border";
@@ -22,37 +22,43 @@ function FAQItem({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: index * 0.07, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`relative glass rounded-xl overflow-hidden transition-all duration-300 ${
-        isOpen ? "border-[var(--color-violet-accent)]/40 shadow-[0_0_24px_rgba(124,58,237,0.12)]" : "glass-hover"
+      transition={{ duration: 0.5, delay: index * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
+      className={`group relative glass rounded-xl overflow-hidden transition-all duration-300 cursor-pointer ${
+        isOpen 
+          ? "border-[var(--color-violet-accent)]/50 shadow-[0_0_32px_rgba(124,58,237,0.15)] bg-gradient-to-br from-white/[0.08] to-white/[0.02]" 
+          : "glass-hover"
       }`}
+      onClick={onToggle}
     >
-      <ShineBorder shineColor={["#7C3AED", "#4F46E5", "#C4B5FD"]} />
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between px-5 py-4 text-left cursor-pointer gap-4"
-      >
-        <span className={`text-lg font-semibold transition-colors duration-200 ${isOpen ? "text-[var(--color-lavender)]" : "text-[var(--color-text-primary)]"}`}>
+      
+      <ShineBorder shineColor={["#7C3AED", "#FFFFFF", "#7a5af8"]} />
+      
+      <div className="flex items-center justify-between px-6 py-5 gap-4">
+        <span className={`text-lg font-semibold transition-all duration-300 ${
+          isOpen ? "text-[var(--color-lavender)]" : "text-[var(--color-text-primary)]"
+        }`}>
           {question}
         </span>
 
-        {/* colored toggle button */}
-        <span
-          className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
             isOpen
-              ? "bg-gradient-to-br from-[var(--color-violet-accent)] to-[var(--color-indigo-accent)] shadow-[0_0_12px_rgba(124,58,237,0.5)]"
-              : "bg-white/5 border border-white/10"
+              ? "bg-gradient-to-br from-[var(--color-violet-accent)] to-[var(--color-indigo-accent)] shadow-[0_0_16px_rgba(124,58,237,0.6)] scale-110"
+              : "bg-white/8"
           }`}
         >
-          <ChevronDown
-            size={14}
-            className={`transition-transform duration-300 ${isOpen ? "rotate-180 text-white" : "text-[var(--color-text-secondary)]"}`}
-          />
-        </span>
-      </button>
+          {isOpen ? (
+            <Minus size={16} className="text-white" />
+          ) : (
+            <Plus size={16} className="text-white" />
+          )}
+        </motion.span>
+      </div>
 
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -60,12 +66,22 @@ function FAQItem({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             className="overflow-hidden"
           >
-            <p className="px-5 pb-5 text-base text-[var(--color-text-secondary)] leading-relaxed border-t border-white/5 pt-3">
-              {answer}
-            </p>
+            <motion.div
+              initial={{ y: -10 }}
+              animate={{ y: 0 }}
+              exit={{ y: -10 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              className="px-6 pb-6 border-t border-white/8"
+            >
+              <div className="pt-4">
+                <p className="text-base text-white leading-relaxed">
+                  {answer}
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -79,8 +95,10 @@ export default function FAQs() {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden" id="faqs">
-      <GlowOrb className="top-1/2 right-0" color="rgba(124, 58, 237, 0.04)" size="600px" />
+    <section ref={sectionRef} className="py-16 md:py-12 relative overflow-x-clip " id="faqs">
+      
+      <GlowOrb className="top-1/2 right-0" color="rgba(124, 58, 237, 0.4)" size="600px" />
+      <GlowOrb className="top-0 left-0" color="rgba(124, 58, 237, 0.4)" size="600px" />
 
       <div className="section-padding relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-24 items-start">
@@ -93,21 +111,19 @@ export default function FAQs() {
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            {/* <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium tracking-wide text-[var(--color-lavender)] border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] mb-6">
-              FAQs
-            </span> */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
-              Got questions?{" "}
-              <span className="gradient-text">We've got answers.</span>
-            </h2>
-            <p className="text-[var(--color-text-secondary)] text-base leading-relaxed">
-              Everything you need to know about Novare Talent — how we work, who we serve, and what makes us different.
-            </p>
-            {/* <div className="mt-10 h-px w-16 bg-gradient-to-r from-[var(--color-violet-accent)] to-transparent" /> */}
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
+                Got questions?{" "}
+                <span className="gradient-text">We've got answers.</span>
+              </h2>
+              <p className="text-white text-lg leading-relaxed">
+                Everything you need to know about Novare Talent — how we work, who we serve, and what makes us different.
+              </p>
+            </div>
           </motion.div>
 
-          {/* Right — separated cards */}
-          <div className="flex flex-col gap-3">
+          {/* Right — FAQ Items */}
+          <div className="space-y-4">
             {FAQS.map((faq, i) => (
               <FAQItem
                 key={i}

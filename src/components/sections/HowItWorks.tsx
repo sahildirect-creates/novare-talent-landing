@@ -25,13 +25,13 @@ export default function HowItWorks() {
   const [f0, f1, f2, f3] = FEATURES;
 
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden" id="how-it-works">
+    <section className="py-16 md:py-12 relative overflow-hidden" id="how-it-works">
       <div className="absolute inset-0 opacity-90">
         <ParticleCanvas />
       </div>
       <GlowOrb
-        className="top-0 left-1/4"
-        color="rgba(124, 58, 237, 0.06)"
+        className="bottom-0 left-1/4"
+        color="rgba(124, 58, 237, 0.4)"
         size="700px"
         parallaxIntensity={20}
       />
@@ -46,10 +46,10 @@ export default function HowItWorks() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-5 gap-4 max-w-5xl mx-auto">
           {/* Row 1 — two equal cards */}
           <StaggerItem className="md:col-span-3">
-            <BentoCard feature={f0} className="min-h-[220px]" />
+            <BentoCard feature={f0} className="min-h-[240px]" />
           </StaggerItem>
           <StaggerItem className="md:col-span-2">
-            <BentoCard feature={f1} className="min-h-[220px]" />
+            <BentoCard feature={f1} className="min-h-[240px]" />
           </StaggerItem>
 
           {/* Row 2 — wide left + narrow right */}
@@ -76,7 +76,7 @@ function BentoCard({
 }) {
   return (
     <div
-      className={`relative rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.03] backdrop-blur-md group cursor-default transition-all duration-150 hover:border-white/[0.12] hover:bg-white/[0.05] flex flex-col justify-end p-7 ${className}`}
+      className={`relative rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.03] group cursor-default transition-all duration-150 hover:border-white/[0.12] hover:bg-white/[0.05] flex flex-col justify-end p-7 ${className}`}
     >
       {/* Background glow blob */}
       <div

@@ -2,12 +2,12 @@
 
 import GlowButton from "@/components/ui/GlowButton";
 
+
 export default function FinalCTA() {
   return (
-    <section id="cta" className="relative overflow-hidden border border-white/10 bg-black/80 backdrop-blur-sm rounded-2xl m-8">
-      <div className="absolute -top-64 left-1/2 -translate-x-1/2 w-[min(1600px,200vw)] h-[900px] rounded-full opacity-10 pointer-events-none" style={{ backgroundColor: "#7a5af8", filter: "blur(120px)", zIndex: 0 }} />
-      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full opacity-10 pointer-events-none" style={{ backgroundColor: "#7a5af8", filter: "blur(100px)", zIndex: 0 }} />
-      
+
+    
+    <section id="cta" className="relative overflow-hidden border border-white/10 bg-black/80 backdrop-blur-sm rounded-2xl mx-auto max-w-6xl m-8" style={{background: 'radial-gradient(ellipse at top, rgba(124, 58, 237, 0.6) 0%, transparent 70%)'}} > 
       <div className="relative z-10 flex flex-col items-center justify-center gap-10 py-16 px-4">
         <h2 className="text-white text-4xl md:text-7xl font-extrabold tracking-tight max-w-xs md:max-w-xl text-center">
           Ready to hire{" "}

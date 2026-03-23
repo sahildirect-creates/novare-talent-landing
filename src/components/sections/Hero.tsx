@@ -94,22 +94,27 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <SocialProofBar />
 
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2"
+        className="absolute bottom-45 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown size={20} className="text-[var(--color-text-muted)]" />
+          <ChevronDown size={20} className="text-[var(--color-lavender)]" />
         </motion.div>
       </motion.div>
+
+            <SocialProofBar />
+
+      {/* Bottom fade overlay */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-bg-primary to-transparent pointer-events-none" />
+
     </section>
   );
 }

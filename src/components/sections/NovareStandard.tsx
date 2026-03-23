@@ -20,10 +20,10 @@ export default function NovareStandard() {
   const lineHeight = useTransform(scrollYProgress, [0.2, 0.7], ["0%", "100%"]);
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-32 relative overflow-hidden" id="for-companies">
+    <section ref={sectionRef} className="py-20 md:py-16 relative overflow-x-clip" id="for-companies">
       <GlowOrb
         className="top-0 right-0"
-        color="rgba(79, 70, 229, 0.06)"
+        color="rgba(124, 58, 237, 0.4)"
         size="600px"
         parallaxIntensity={22}
         parallaxInvert
@@ -37,10 +37,10 @@ export default function NovareStandard() {
           description="Every candidate passes a multi-stage evaluation before reaching your pipeline."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 max-w-5xl mx-auto items-center mt-4">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 max-w-7xl mx-auto mt-4 items-center">
 
-          {/* Steps */}
-          <div className="space-y-3">
+          {/* Steps - 1/3 of screen on desktop */}
+          <div className="w-full lg:w-1/3 space-y-3">
             {/* Timeline steps — line only between circles */}
             <div className="relative">
               {/* Connecting line — sits between first and last circle centers */}
@@ -62,11 +62,11 @@ export default function NovareStandard() {
                 {EVALUATION_STEPS.map((step, i) => {
                   const Icon = STEP_ICONS[i];
                   return (
-                    <ScrollReveal key={step.step} delay={i * 0.15}>
+                    <ScrollReveal key={step.step} delay={i * 1}>
                       <div className="group flex gap-5 items-start">
                         {/* Circle */}
                         <div className="relative shrink-0 z-10">
-                          <div className="w-10 h-10 rounded-full bg-[var(--color-glass-bg)] border border-[var(--color-glass-border)] flex items-center justify-center text-[var(--color-violet-accent)] transition-all duration-300 group-hover:border-[var(--color-violet-accent)] group-hover:shadow-[0_0_16px_rgba(124,58,237,0.35)]">
+                          <div className="w-10 h-10 rounded-full bg-[rgba(15,15,30,1)] border border-[var(--color-glass-border)] flex items-center justify-center text-white transition-all duration-300 group-hover:border-[var(--color-violet-accent)] group-hover:shadow-[0_0_16px_rgba(124,58,237,0.35)]">
                             <Icon size={16} />
                           </div>
                         </div>
@@ -74,14 +74,14 @@ export default function NovareStandard() {
                         {/* Card */}
                         <div className="flex-1 rounded-xl border border-white/5 bg-[rgba(15,15,30,0.4)] px-5 py-4 transition-all duration-300 group-hover:border-[rgba(124,58,237,0.2)] group-hover:bg-[rgba(124,58,237,0.04)] group-hover:shadow-[0_0_24px_rgba(124,58,237,0.06)]">
                           <div className="flex items-center gap-2.5 mb-1.5">
-                            <span className="text-[10px] font-mono text-[var(--color-violet-accent)] tracking-[0.15em] opacity-70">
+                            <span className="text-[10px] font-sans text-[var(--color-violet-accent)] tracking-[0.15em]">
                               {step.step}
                             </span>
                             <h3 className="text-sm font-semibold text-[var(--color-text-primary)]">
                               {step.title}
                             </h3>
                           </div>
-                          <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                          <p className="text-sm text-white leading-relaxed">
                             {step.description}
                           </p>
                         </div>
@@ -103,29 +103,27 @@ export default function NovareStandard() {
                     <div className="text-xs font-semibold gradient-text tracking-widest">
                       NOVARE CERTIFIED
                     </div>
-                    <div className="text-[10px] text-[var(--color-text-muted)] mt-0.5">
+                    <div className="text-[10px] text-white mt-0.5">
                       Only the top 1% pass all stages
                     </div>
                   </div>
-                  <CheckCircle2 size={14} className="text-[var(--color-violet-accent)] ml-1 opacity-80" />
+                  <CheckCircle2 size={14} className="text-[var(--color-violet-accent)] ml-1" />
                 </div>
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Video */}
-          <ScrollReveal variant="scale-in">
-            <div className="relative group">
-              {/* Outer glow ring */}
-              <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[var(--color-violet-accent)] via-[var(--color-indigo-accent)] to-transparent opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
-              <div className="relative glass rounded-2xl overflow-hidden aspect-video">
+          {/* Video - 2/3 of screen on desktop */}
+          {/* <ScrollReveal variant="scale-in"> */}
+            <div className="w-full lg:w-2/3">
+              <div className="relative overflow-hidden aspect-video">
                 <video
                   src="/videos/eval.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-xl"
                 />
                 {/* Bottom gradient fade */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-transparent to-transparent opacity-40" />
@@ -140,7 +138,7 @@ export default function NovareStandard() {
                 </div>
               </div>
             </div>
-          </ScrollReveal>
+          {/* </ScrollReveal> */}
         </div>
       </div>
     </section>
