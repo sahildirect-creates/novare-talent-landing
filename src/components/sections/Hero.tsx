@@ -77,6 +77,14 @@ export default function Hero() {
           <GlowButton href="/get-hired" variant="secondary" className="text-base bg-transparent border border-[var(--color-glass-border)] hover:bg-white/5">
             Get Hired
           </GlowButton>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="mt-6 text-center"
+        >
           <a
             href="#how-it-works"
             className="px-6 py-3 rounded-full text-sm font-medium text-[var(--color-lavender)] hover:text-white transition-all duration-300"

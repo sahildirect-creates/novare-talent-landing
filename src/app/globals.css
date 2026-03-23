@@ -59,7 +59,10 @@ body {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-violet-accent), var(--color-indigo-accent));
+  background:
+  radial-gradient(ellipse at top left, #FFFFFF, #7a5af8),
+  radial-gradient(ellipse at bottom right, #7a5af8, #FFFFFF);
+  /* background: radial-gradient(#7a5af8, #fff); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

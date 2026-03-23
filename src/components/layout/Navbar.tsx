@@ -25,7 +25,6 @@ export default function Navbar() {
             alt="Novare Talent"
             width={150}
             height={28}
-            className="text-[var(--color-violet-accent)]"
           />
         </a>
       </motion.div>
@@ -82,9 +81,8 @@ export default function Navbar() {
             <Image
               src="/images/logo.svg"
               alt="Novare Talent"
-              width={120}
-              height={22}
-              className="text-[var(--color-violet-accent)]"
+              width={150}
+              height={28}
             />
           </a>
           <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white p-2">
