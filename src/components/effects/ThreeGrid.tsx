@@ -17,7 +17,7 @@ const RIPPLE_WIDTH = 2.5;
 const LERP_FACTOR = 0.06;
 
 // ── Colors ──
-const VIOLET = new THREE.Color(0x8b5cf6);
+const VIOLET = new THREE.Color(0x7F03E3);
 const BRIGHT_VIOLET = new THREE.Color(0xddd6fe);
 const BG_COLOR = new THREE.Color(0x030014);
 

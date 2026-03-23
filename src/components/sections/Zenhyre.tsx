@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Briefcase, GraduationCap } from "lucide-react";
+import { ArrowUpRight, Briefcase, GraduationCap } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { StaggerContainer, StaggerItem } from "@/components/effects/ScrollReveal";
 import GlowOrb from "@/components/effects/GlowOrb";
@@ -8,36 +8,40 @@ import AuroraMesh from "@/components/effects/AuroraMesh";
 
 const cards = [
   {
+    label: "For Recruiters",
     title: "Looking to expand your team?",
     cta: "Sign up as Recruiter",
     href: "/sign-up",
-    icon: <Briefcase size={24} />,
+    icon: Briefcase,
+    number: "01",
     benefits: [
       "Access to exclusive talent pool",
       "Hire curated candidates",
       "Faster and simpler process",
     ],
-    accent: "from-[var(--color-violet-accent)] to-purple-600",
-    borderAccent: "hover:border-[var(--color-violet-accent)]/40",
+    // Dark card — inverted
+    variant: "dark",
   },
   {
+    label: "For Students",
     title: "Searching for opportunities?",
     cta: "Sign up as Student",
     href: "/sign-up",
-    icon: <GraduationCap size={24} />,
+    icon: GraduationCap,
+    number: "02",
     benefits: [
       "Internships and job opportunities",
       "Resources for career guidance",
       "Tools & much more",
     ],
-    accent: "from-[var(--color-indigo-accent)] to-blue-600",
-    borderAccent: "hover:border-[var(--color-indigo-accent)]/40",
+    // Light/ghost card
+    variant: "light",
   },
 ];
 
 export default function Zenhyre() {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
+    <section className="py-16 md:py-28 relative overflow-hidden">
       <AuroraMesh intensity={0.5} opacity={0.6} />
       <GlowOrb
         className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -54,39 +58,112 @@ export default function Zenhyre() {
           description="A curated portal exclusively for recruiters and students from India's top colleges, designed to connect each other simpler and faster."
         />
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {cards.map((card) => (
-            <StaggerItem key={card.title}>
-              <div className={`glass rounded-2xl p-8 h-full transition-all duration-500 ${card.borderAccent} group`}>
-                {/* Icon */}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.accent} flex items-center justify-center text-white mb-6 opacity-80 group-hover:opacity-100 transition-opacity`}>
-                  {card.icon}
-                </div>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mt-12">
+          {cards.map((card) => {
+            const Icon = card.icon;
+            const isDark = card.variant === "dark";
 
-                <h3 className="text-xl font-semibold mb-6">{card.title}</h3>
-
-                <ul className="space-y-3 mb-8">
-                  {card.benefits.map((benefit) => (
-                    <li
-                      key={benefit}
-                      className="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-violet-accent)] mt-1.5 shrink-0" />
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={card.href}
-                  className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r ${card.accent} hover:shadow-lg transition-all duration-300`}
+            return (
+              <StaggerItem key={card.title}>
+                <div
+                  className={`
+                    relative rounded-2xl p-8 h-full flex flex-col overflow-hidden
+                    transition-all duration-500 group cursor-pointer
+                    ${isDark
+                      ? "bg-[var(--color-violet-accent)]/10 border border-[var(--color-violet-accent)]/20 hover:border-[var(--color-violet-accent)]/50 hover:bg-[var(--color-violet-accent)]/15"
+                      : "bg-white/[0.03] border border-white/10 hover:border-white/20 hover:bg-white/[0.06]"
+                    }
+                  `}
                 >
-                  {card.cta}
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </StaggerItem>
-          ))}
+                  {/* Large background number — decorative */}
+                  <span
+                    className="absolute top-6 right-7 text-[5rem] font-black leading-none select-none pointer-events-none tabular-nums"
+                    style={{
+                      color: isDark
+                        ? "rgba(124,58,237,0.12)"
+                        : "rgba(255,255,255,0.04)",
+                      fontVariantNumeric: "tabular-nums",
+                    }}
+                  >
+                    {card.number}
+                  </span>
+
+                  {/* Top row: label + icon */}
+                  <div className="flex items-center justify-between mb-8">
+                    <span
+                      className={`text-xs font-semibold uppercase tracking-[0.18em] ${
+                        isDark
+                          ? "text-[var(--color-violet-accent)]"
+                          : "text-[var(--color-text-secondary)]"
+                      }`}
+                    >
+                      {card.label}
+                    </span>
+                    <div
+                      className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
+                        isDark
+                          ? "border-[var(--color-violet-accent)]/30 text-[var(--color-violet-accent)]"
+                          : "border-white/10 text-[var(--color-text-secondary)]"
+                      }`}
+                    >
+                      <Icon size={16} strokeWidth={1.5} />
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-semibold leading-snug mb-8 pr-4">
+                    {card.title}
+                  </h3>
+
+                  {/* Benefits — numbered, not bulleted */}
+                  
+                  <ul className="space-y-4 mb-10 flex-1">
+                    {card.benefits.map((benefit, i) => (
+                      <li key={benefit} className="flex items-start gap-4">
+                        {/* Thin separator line */}
+                        {i > 0 && (
+                          <div className="absolute left-8 right-8 h-px bg-white/5" />
+                        )}
+                        <span
+                          className={`text-xs font-mono mt-0.5 shrink-0 ${
+                            isDark
+                              ? "text-[var(--color-violet-accent)]/60"
+                              : "text-[var(--color-text-secondary)]/40"
+                          }`}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                          {benefit}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA — text link style, not a pill button */}
+                  <a
+                    href={card.href}
+                    className={`
+                      inline-flex items-center gap-2 text-sm font-medium
+                      transition-all duration-300 group/link w-fit
+                      ${isDark
+                        ? "text-[var(--color-violet-accent)]"
+                        : "text-[var(--color-text-secondary)] hover:text-white"
+                      }
+                    `}
+                  >
+                    <span className="border-b border-current pb-px">
+                      {card.cta}
+                    </span>
+                    <ArrowUpRight
+                      size={14}
+                      className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                    />
+                  </a>
+                </div>
+              </StaggerItem>
+            );
+          })}
         </StaggerContainer>
       </div>
     </section>

@@ -1,12 +1,7 @@
-"use client";
-
-import { useCallback, useEffect } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
+import Image from "next/image";
 import SectionHeader from "@/components/ui/SectionHeader";
-import ScrollReveal from "@/components/effects/ScrollReveal";
-import AuroraMesh from "@/components/effects/AuroraMesh";
+import { Marquee } from "@/components/ui/Marquee";
 import { CLIENT_TESTIMONIALS, STUDENT_TESTIMONIALS } from "@/lib/constants";
 
 function TestimonialCard({
@@ -14,21 +9,33 @@ function TestimonialCard({
   role,
   quote,
   initial,
+  image,
 }: {
   name: string;
   role: string;
   quote: string;
   initial: string;
+  image?: string;
 }) {
   return (
-    <div className="glass rounded-2xl p-6 md:p-8 min-w-0 flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.33%]">
+    <div className="glass rounded-2xl p-6 w-80 shrink-0">
       <Quote size={20} className="text-[var(--color-violet-accent)] opacity-40 mb-4" />
       <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-6 line-clamp-5">
         {quote}
       </p>
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--color-violet-accent)] to-[var(--color-indigo-accent)] flex items-center justify-center text-white text-sm font-semibold shrink-0">
-          {initial}
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--color-violet-accent)] to-[var(--color-indigo-accent)] flex items-center justify-center text-white text-sm font-semibold shrink-0 overflow-hidden">
+          {image ? (
+            <Image
+              src={image}
+              alt={name}
+              width={40}
+              height={40}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <span>{initial}</span>
+          )}
         </div>
         <div>
           <div className="text-sm font-medium">{name}</div>
@@ -39,78 +46,10 @@ function TestimonialCard({
   );
 }
 
-function CarouselSection({
-  title,
-  testimonials,
-}: {
-  title: string;
-  testimonials: Array<{
-    name: string;
-    role?: string;
-    company?: string;
-    college?: string;
-    quote: string;
-    initial: string;
-  }>;
-}) {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start", skipSnaps: false },
-    [Autoplay({ delay: 4000, stopOnInteraction: false })]
-  );
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-  return (
-    <div className="mb-16 last:mb-0">
-      <ScrollReveal>
-        <h3 className="text-lg font-medium text-[var(--color-text-secondary)] mb-6 section-padding">
-          {title}
-        </h3>
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <div className="relative">
-          <div ref={emblaRef} className="overflow-hidden section-padding">
-            <div className="flex gap-6 -ml-0">
-              {testimonials.map((t) => (
-                <TestimonialCard
-                  key={t.name}
-                  name={t.name}
-                  role={t.role || t.company || t.college || ""}
-                  quote={t.quote}
-                  initial={t.initial}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <button
-              onClick={scrollPrev}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[var(--color-text-muted)] hover:text-white hover:border-white/20 transition-all cursor-pointer"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={scrollNext}
-              className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[var(--color-text-muted)] hover:text-white hover:border-white/20 transition-all cursor-pointer"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-        </div>
-      </ScrollReveal>
-    </div>
-  );
-}
-
 export default function Testimonials() {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden" id="testimonials">
-      <AuroraMesh intensity={0.4} opacity={0.5} />
-      <div className="section-padding relative z-10">
+    <section className="py-16 md:py-24 overflow-hidden" id="testimonials">
+      <div className="section-padding">
         <SectionHeader
           tag="Testimonials"
           title="Trusted by those who"
@@ -118,21 +57,41 @@ export default function Testimonials() {
         />
       </div>
 
-      <CarouselSection
-        title="What our clients say"
-        testimonials={CLIENT_TESTIMONIALS.map((t) => ({
-          ...t,
-          role: `${t.role}, ${t.company}`,
-        }))}
-      />
+      <div className="mb-8">
+        <h3 className="text-lg font-medium text-[var(--color-text-secondary)] mb-4 section-padding">
+          What our clients say
+        </h3>
+        <Marquee pauseOnHover repeat={6} className="[--gap:1.5rem] py-4">
+          {CLIENT_TESTIMONIALS.map((t) => (
+            <TestimonialCard
+              key={t.name}
+              name={t.name}
+              role={`${t.role}, ${t.company}`}
+              quote={t.quote}
+              initial={t.initial}
+              image={t.image}
+            />
+          ))}
+        </Marquee>
+      </div>
 
-      <CarouselSection
-        title="What our students say"
-        testimonials={STUDENT_TESTIMONIALS.map((t) => ({
-          ...t,
-          role: t.college,
-        }))}
-      />
+      <div>
+        <h3 className="text-lg font-medium text-[var(--color-text-secondary)] mb-4 section-padding">
+          What our students say
+        </h3>
+        <Marquee pauseOnHover reverse repeat={6} className="[--gap:1.5rem] py-4">
+          {STUDENT_TESTIMONIALS.map((t) => (
+            <TestimonialCard
+              key={t.name}
+              name={t.name}
+              role={t.college ?? ""}
+              quote={t.quote}
+              initial={t.initial}
+              image={t.image}
+            />
+          ))}
+        </Marquee>
+      </div>
     </section>
   );
 }

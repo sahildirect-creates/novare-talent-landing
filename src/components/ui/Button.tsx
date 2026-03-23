@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import GlowButton from "@/components/ui/GlowButton";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary";
@@ -23,10 +24,19 @@ export default function Button({
   };
 
   const variants = {
-    primary: "glow-button text-white font-medium",
+    primary: "", // Will use GlowButton for primary
     secondary:
       "bg-transparent border border-violet-accent/30 text-violet-accent hover:bg-violet-accent/10 transition-all duration-300",
   };
+
+  // Use GlowButton for primary variant
+  if (variant === "primary") {
+    return (
+      <GlowButton href={href} className={cn(sizes[size], className)}>
+        {children}
+      </GlowButton>
+    );
+  }
 
   const classes = cn(
     "rounded-full inline-flex items-center justify-center cursor-pointer",

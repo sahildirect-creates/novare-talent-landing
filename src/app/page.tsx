@@ -10,13 +10,14 @@ import Testimonials from "@/components/sections/Testimonials";
 import FAQs from "@/components/sections/FAQs";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/layout/Footer";
+import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 
 export default function Home() {
-  return (
+  return (<>
     <main className="relative z-[1]">
       <Navbar />
       <Hero />
-      <SocialProofBar />
+      {/* <SocialProofBar /> */}
       <Zenhyre />
       <WhyTheOnePercent />
       <HowItWorks />
@@ -27,5 +28,9 @@ export default function Home() {
       <FinalCTA />
       <Footer />
     </main>
+      <div className="fixed bottom-0 inset-x-0 h-16 pointer-events-none z-50">
+        <ProgressiveBlur height="100%" position="bottom"/>
+      </div>
+  </>
   );
 }

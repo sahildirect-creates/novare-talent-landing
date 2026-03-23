@@ -1,36 +1,81 @@
-import { cn } from "@/lib/utils";
+import { type ComponentPropsWithoutRef } from "react"
 
-interface MarqueeProps {
-  children: React.ReactNode;
-  className?: string;
-  speed?: number;
-  reverse?: boolean;
+import { cn } from "@/lib/utils"
+
+interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
+  /**
+   * Optional CSS class name to apply custom styles
+   */
+  className?: string
+  /**
+   * Whether to reverse the animation direction
+   * @default false
+   */
+  reverse?: boolean
+  /**
+   * Whether to pause the animation on hover
+   * @default false
+   */
+  pauseOnHover?: boolean
+  /**
+   * Content to be displayed in the marquee
+   */
+  children: React.ReactNode
+  /**
+   * Whether to animate vertically instead of horizontally
+   * @default false
+   */
+  vertical?: boolean
+  /**
+   * Number of times to repeat the content
+   * @default 4
+   */
+  repeat?: number
 }
 
-export default function Marquee({
-  children,
+export function Marquee({
   className,
-  speed = 30,
   reverse = false,
+  pauseOnHover = false,
+  children,
+  vertical = false,
+  repeat = 4,
+  ...props
 }: MarqueeProps) {
   return (
     <div
+      {...props}
       className={cn(
-        "overflow-hidden relative",
-        "before:absolute before:left-0 before:top-0 before:bottom-0 before:w-24 before:z-10 before:bg-gradient-to-r before:from-bg-primary before:to-transparent",
-        "after:absolute after:right-0 after:top-0 after:bottom-0 after:w-24 after:z-10 after:bg-gradient-to-l after:from-bg-primary after:to-transparent",
+        "group relative flex gap-(--gap) overflow-hidden [--duration:60s] [--gap:1rem]",
+        {
+          "flex-row": !vertical,
+          "flex-col": vertical,
+        },
         className
       )}
     >
-      <div
-        className="flex gap-8 w-max"
-        style={{
-          animation: `marquee ${speed}s linear infinite${reverse ? " reverse" : ""}`,
-        }}
-      >
-        {children}
-        {children}
+      {/* Fade gradients */}
+      <div className="absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-[var(--color-bg-primary)] to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-[var(--color-bg-primary)] to-transparent pointer-events-none" />
+      
+      {/* Marquee content */}
+      <div className="flex gap-(--gap)">
+        {Array(repeat)
+          .fill(0)
+          .map((_, i) => (
+            <div
+              key={i}
+              className={cn("flex shrink-0 justify-around gap-(--gap) marquee-smooth", {
+                "animate-marquee flex-row": !vertical,
+                "animate-marquee-vertical flex-col": vertical,
+                "group-hover:[animation-play-state:paused]": pauseOnHover,
+                "[animation-direction:reverse]": reverse,
+              })}
+            >
+              {children}
+            </div>
+          ))}
       </div>
     </div>
-  );
+  )
 }

@@ -35,7 +35,7 @@ function FAQItem({
         onClick={onToggle}
         className="w-full flex items-center justify-between px-5 py-4 text-left cursor-pointer gap-4"
       >
-        <span className={`text-sm font-medium transition-colors duration-200 ${isOpen ? "text-[var(--color-lavender)]" : "text-[var(--color-text-primary)]"}`}>
+        <span className={`text-lg font-semibold transition-colors duration-200 ${isOpen ? "text-[var(--color-lavender)]" : "text-[var(--color-text-primary)]"}`}>
           {question}
         </span>
 
@@ -63,7 +63,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="overflow-hidden"
           >
-            <p className="px-5 pb-5 text-sm text-[var(--color-text-secondary)] leading-relaxed border-t border-white/5 pt-3">
+            <p className="px-5 pb-5 text-base text-[var(--color-text-secondary)] leading-relaxed border-t border-white/5 pt-3">
               {answer}
             </p>
           </motion.div>
@@ -88,23 +88,22 @@ export default function FAQs() {
           {/* Left */}
           <motion.div 
             ref={leftRef} 
-            className="lg:sticky lg:top-32"
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium tracking-wide text-[var(--color-lavender)] border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] mb-6">
+            {/* <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium tracking-wide text-[var(--color-lavender)] border border-[var(--color-glass-border)] bg-[var(--color-glass-bg)] mb-6">
               FAQs
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6 text-left">
+            </span> */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
               Got questions?{" "}
               <span className="gradient-text">We've got answers.</span>
             </h2>
-            <p className="text-[var(--color-text-secondary)] text-base leading-relaxed text-left">
+            <p className="text-[var(--color-text-secondary)] text-base leading-relaxed">
               Everything you need to know about Novare Talent — how we work, who we serve, and what makes us different.
             </p>
-            <div className="mt-10 h-px w-16 bg-gradient-to-r from-[var(--color-violet-accent)] to-transparent" />
+            {/* <div className="mt-10 h-px w-16 bg-gradient-to-r from-[var(--color-violet-accent)] to-transparent" /> */}
           </motion.div>
 
           {/* Right — separated cards */}

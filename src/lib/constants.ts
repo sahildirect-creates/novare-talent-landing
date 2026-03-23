@@ -84,6 +84,7 @@ export const CLIENT_TESTIMONIALS = [
     quote:
       "Novare Talent focuses on the right pain point in the complex domain of recruitment, specifically for startups looking for high-quality, motivated talent from top institutions. Their curated approach saves significant time and effort.",
     initial: "AD",
+    image: "/images/testimonials/aniket.png",
   },
   {
     name: "Hitesh Sharma",
@@ -92,6 +93,7 @@ export const CLIENT_TESTIMONIALS = [
     quote:
       "I was looking for a UX intern and came across Novare Talent via LinkedIn. We had a quick chat and I shared my requirements + budget, and within a few days, they connected me with an intern, which was very helpful, fast and curated!",
     initial: "HS",
+    image: "/images/testimonials/hitesh.jpg",
   },
   {
     name: "Onkar Borade",
@@ -100,6 +102,7 @@ export const CLIENT_TESTIMONIALS = [
     quote:
       "Working with Novare Talent just made hiring so much easier. If you want fast, thoughtful hiring without the usual headache, definitely recommend Novare Talent.",
     initial: "OB",
+    image: "/images/testimonials/onkar.jpg",
   },
   {
     name: "Shruti",
@@ -108,6 +111,7 @@ export const CLIENT_TESTIMONIALS = [
     quote:
       "Grateful to Sahil and Novare Talent for the thoughtful engagement. They understood our needs perfectly and delivered candidates who were the right fit for our early-stage team.",
     initial: "S",
+    image: "/images/testimonials/Shruti.jpg",
   },
 ];
 
@@ -118,6 +122,7 @@ export const STUDENT_TESTIMONIALS = [
     quote:
       "Grateful for this opportunity and looking forward to learning, contributing, and growing through this experience.",
     initial: "CJ",
+    image: "/images/testimonials/chirag.jpg",
   },
   {
     name: "Preksha Jain",
@@ -125,6 +130,8 @@ export const STUDENT_TESTIMONIALS = [
     quote:
       "As an intense Apping Person, Novare Talent made it easy to connect with high-growth startups, cutting out the noise and helping me find meaningful opportunities fast.",
     initial: "PJ",
+        image: "/images/testimonials/preksha.jpg",
+
   },
   {
     name: "Deep Agrawal",
@@ -132,6 +139,7 @@ export const STUDENT_TESTIMONIALS = [
     quote:
       "I'm really grateful to Novare Talent for helping me secure an internship and saving me the time I would've spent on apping.",
     initial: "DA",
+    image: "/images/testimonials/deep.jpg",
   },
   {
     name: "Yashika Singh",
@@ -139,6 +147,7 @@ export const STUDENT_TESTIMONIALS = [
     quote:
       "Novare Talent helped me discover opportunities that matched my creative journey and kept things simple throughout the process.",
     initial: "YS",
+    image: "/images/testimonials/yashika.jpg",
   },
   {
     name: "Nikhil Khandelwal",
@@ -146,6 +155,7 @@ export const STUDENT_TESTIMONIALS = [
     quote:
       "Working in a startup opened many doors for growth, from exercising my skill of expertise to making useful connections in the industry.",
     initial: "NK",
+    image: "/images/testimonials/nikhil.jpg",
   },
 ];
 
@@ -154,21 +164,25 @@ export const TEAM_MEMBERS = [
     name: "Sahil Sheoran",
     role: "Founder & CEO",
     college: "IIT Bombay",
+    image: "/images/team/sahil.webp",
   },
   {
     name: "Sankalp Bhitkar",
     role: "Head of Creatives",
     college: "IIT Bombay",
+    image: "/images/team/sankalp.webp",
   },
   {
     name: "Sanat Agrawal",
     role: "Founding Engineer",
     college: "IIT Bombay",
+    image: "/images/team/sanat.webp",
   },
   {
     name: "Ayush Awatade",
     role: "Founding Engineer",
     college: "IIT Bombay",
+    image: "/images/team/ayush.webp",
   },
 ];
 
