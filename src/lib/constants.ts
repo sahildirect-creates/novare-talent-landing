@@ -1,9 +1,9 @@
 export const NAV_LINKS = [
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "For Companies", href: "#for-companies" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Team", href: "#team" },
-  { label: "FAQs", href: "#faqs" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "For Companies", href: "/#for-companies" },
+  { label: "IIT Placements", href: "/iit-placements" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "Team", href: "/#team" },
 ];
 
 export const STATS = [
@@ -229,6 +229,7 @@ export const FOOTER_LINKS = {
   ],
   discover: [
     { label: "Zenhyre", href: "/Dashboard" },
+    { label: "IIT Placements", href: "/iit-placements" },
     { label: "For Recruiters", href: "/sign-up" },
     { label: "For Students", href: "/sign-up" },
   ],
